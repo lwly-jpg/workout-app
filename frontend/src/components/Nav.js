@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const Nav = () => {
 
   return (
@@ -9,5 +11,7 @@ const Nav = () => {
       </div>
     </header>
   )
-  
+
 }
+
+export default Nav
