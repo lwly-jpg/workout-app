@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 const express = require('express');
+const workoutRoutes = require('./routes/workouts');
 
 // Express app
 const app = express();
@@ -12,9 +13,7 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.get('/', (req, res) => {
-  res.json({message: "Welcome!"})
-});
+app.use('/api/workouts', workoutRoutes)
 
 // Listen for requests
 app.listen(process.env.PORT, () => {
