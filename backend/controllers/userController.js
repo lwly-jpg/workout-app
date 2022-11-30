@@ -1,4 +1,9 @@
 const User = require('../models/userModel');
+const jsonwebtoken = require('jsonwebtoken');
+
+const createToken = (_id) => {
+  return jsonwebtoken.sign({_id}, process.env.SECRET, { expiresIn: '3d' })
+}
 
 // User login
 const loginUser = async (req, res) => {
@@ -12,7 +17,10 @@ const registerUser = async (req, res) => {
   try {
     const user = await User.register(email, password)
 
-    res.status(200).json({email, user})
+    // Create token
+    const token = createToken(user._id)
+
+    res.status(200).json({email, token})
 
   } catch (error) {
     res.status(400).json({error: error.message})
