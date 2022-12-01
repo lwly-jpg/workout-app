@@ -8,6 +8,12 @@ const Nav = () => {
         <Link to="/">
           <h2>Workout Helper</h2>
         </Link>
+        <nav>
+          <div>
+            <Link to="/register">Register</Link>
+            <Link to="/login">Log in</Link>
+          </div>
+        </nav>
       </div>
     </header>
   )
