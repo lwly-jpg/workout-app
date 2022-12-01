@@ -1,16 +1,16 @@
 const jsonwebtoken = require('jsonwebtoken')
 const User = require('../models/userModel')
 
-const requireAuth = (req, res, next) => {
+const requireAuth = async (req, res, next) => {
 
   // Verify user authentication
-  const { authorisation } = req.headers
+  const { authorization } = req.headers
 
-  if (!authorisation) {
+  if (!authorization) {
     return res.status(401).json({error: 'Authorisation token required'})
   }
 
-  const token = authorisation.split(" ")[1]
+  const token = authorization.split(" ")[1]
 
   try {
     const {_id} = jsonwebtoken.verify(token, process.env.SECRET)
